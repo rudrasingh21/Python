@@ -1,46 +1,86 @@
 ------
 CLASS:--
+------
 
 1) Class is a blueprint for creating instances.
 
 2) Here each unique employee we will create, as a instance of 	this class.
 
 3) We also have Class veriable. AND Instance variable. 
- 
 
+------
+Object :--
+------
 
---------
+1) Object is one of instances of the class. 
+
+2) Which can perform the functionalities ,which are defined in the class.
+
+------
+self :--
+------
+
+1) self represents the instance of the class. 
+
+2) By using the "self" keyword we can access the attributes and methods of the class in python.
+
+------
+__init__ :--
+------
+
+The __init__ function is called a constructor, or initializer, and is automatically called 
+when you create a new instance of a class. Within that function, the newly created object 
+is assigned to the parameter self.
+
+Please check blog:-
+https://stackoverflow.com/questions/8609153/why-do-we-use-init-in-python-classes#
+
+------------------------
 Creating an empty class:-
+------------------------
 
 class Employee:
 	pass
-	
---------
 
+NOTE:-	The pass statement is a null operation; nothing happens when it executes. 
+		The pass is also useful in places where your code will eventually go, but has not been written yet.
+		
+		It is useful as a placeholder when a statement is required syntactically, but no code needs to be executed, for example:
+
+def f(arg): pass    # a function that does nothing (yet)
+
+class C: pass       # a class with no methods (yet)
+	
+------------------------
 Creating Instances of Employee class:-
+------------------------
 
 emp_1 = Employee()
 emp_2 = Employee()
 
-emp_1 and emp_2 are the instances of the class.
+---> emp_1 and emp_2 are the instances of the class.
 
---------
 
 Let's Print:-
 
-print(emp_1)
-print(emp_2)
+>>> print(emp_1)
+<__main__.Employee instance at 0x7ff209221488>
 
-NOTE:- both will be employee object and they both will be unique.
-Both will be at different location in the memory.
+>>> print(emp_2)
+<__main__.Employee instance at 0x7ff2092214d0>
 
---------
 
+NOTE:-	Both will be employee object and they both will be unique.
+		Both will be at different location in the memory.
+
+------------------------
 Using INSTANCE Variable:-
+------------------------
 
 class Employee:
 	pass
-	
+
+#Creating Instances of Employee class:-
 emp_1 = Employee()
 emp_2 = Employee()
 
@@ -61,8 +101,9 @@ emp_2.pay   = 20000
 print(emp_1.email)
 print(emp_2.email)
 
-------
+------------
 Using Class:-
+------------
 
 NOTE:- Class Variable are variable which are shared among Instances with in the class.
 	   Class variable will be same for each variable.
@@ -74,20 +115,29 @@ class Employee:
 		self.lname  = last
 		self.pay 	= pay
 		self.email  = first + '.' + last + '@gmail.com'
-		
+
+#Creating Instances of Employee class:-
 emp_1 = Employee('rudra','singh',10000)
 emp_2 = Employee('seema','singh',20000)
 
-print(emp_1.email)
-print(emp_2.email)
+>>> print(emp_1.email)
+rudra.@gmail.com
+
+>>> print(emp_2.email)
+seema.@gmail.com
+
+>>> print(emp_1.fname)
+rudra
+>>> print(emp_2.fname)
+seema
 
 # Other Way to print first and last name
 
 print('{} {}'.format(emp_1.first, emp_2.last))
 
-------
-
+------------------------
 NOTE:- Better to create a METHOD for FULL NAME as we are doing this only for a single employee.
+------------------------
 
 class Employee:
 	
@@ -108,13 +158,14 @@ emp_2 = Employee('seema','singh',20000)
 
 print(emp_2.fullname())
 
-------
-Calling or RUnning these method using class name:-
+------------------
+Calling or Running these method using class name:-
+------------------
 
 print(Employee.fullname(emp_1));
 
 #similer to calling it using Instance
-#	emp_2.fullname()
+#emp_2.fullname()
 	
 	
 -------------Class Variable Examples------------
@@ -163,7 +214,9 @@ class Employee:
 		
 #Method for Raise
 	def apply_raise(self):
-		self.pay	= int(self.pay * Employee.raise_amount)	#We need to access class variable either using class--> Employee.raise_amount or using INSTANCE --> self.raise_amount
+		self.pay	= int(self.pay * Employee.raise_amount)	
+		#We need to access class variable either using class--> Employee.raise_amount 
+		#or using INSTANCE --> self.raise_amount
 		
 
 #Instance
@@ -174,21 +227,24 @@ emp_2 = Employee('seema','singh',20000)
 print(emp1.pay)
 
 emp_1.apply_raise()		#will raise only for emp1
-print(emp.pay)
+print(emp1.pay)
 
-NOTE:- Y we are using class vaiable using instance!! -->
+NOTE:- Why we are using class vaiable using instance!! -->
+
 print(Employee.raise_amount)
 print(emp_1.raise_amount)
 print(emp_2.raise_amount)
 
 All will give you the value of raise  i.e. 1.04
 		
+NOTE:-
 If we want to access an attribute using instance, it will check whether that instance contain attribute or not ! if not then it will check in the class from where it inharits , contains attrebute or not.
 
 So as above instance emp_1 doesn't have attrebute but emp_1 inherits class Employee which contain the attrebute.
 
-----------
+----------------------
 Changing raise_amount:-
+----------------------
 
 Now If we want to change raise amount 
 
@@ -208,9 +264,9 @@ Result:-
 1.05
 1.05
 
-------
-
+------------------------------------
 Let's change it only for instance:-
+------------------------------------
 
 emp_1.raise_amount	=	1.05
 
@@ -246,8 +302,10 @@ class Employee:
 		
 #Method for Raise
 	def apply_raise(self):							#---- Regular Method
-		self.pay	= int(self.pay * Employee.raise_amount)	#We need to access class variable either using class
-															#--> Employee.raise_amount or using INSTANCE --> self.raise_amount
+		self.pay	= int(self.pay * Employee.raise_amount)	
+		
+		# We need to access class variable either using class
+		# Employee.raise_amount or using INSTANCE --> self.raise_amount
 
 #As below , in regular methods we use (self) but in class methods , we pass a variable i.e. (cls) in below example.
 		
@@ -283,7 +341,8 @@ Employee.set_raise_amt(1.05)
 1.05
 1.05
 
-NOTE :- Because set_raise_amt is a class method so it is changing all values. Works same as Employee.raise_amount	=	1.05 works.
+NOTE :- Because set_raise_amt is a class method so it is changing all values. 
+		Works same as Employee.raise_amount	=	1.05 works.
 
 ----------------------------------------------------------------------------
 Getting employee in string and after parsing getting the result using CLASS.
@@ -512,7 +571,7 @@ class Developer(Employee):						#class Developer inherits from Employee.
 		#Employee.__init__(self,first,last,pay) --- Other Way to do. Useful while doing multiple inharits.
         self.prog_lang = prog_lang				#Additional parameter prog_lang, we need to define here.
 
-		
+
 dev_1 = Developer('Corey', 'Schafer', 50000, 'Python')
 dev_2 = Developer('Test', 'Employee', 60000, 'Java')
 
@@ -523,6 +582,12 @@ Output:-
 Corey.schafer@gmail.com
 Python
 
+
+-----------------------
+NOTE:- 
+
+super Keyword can be used to gain access to inherited methods – from a parent or sibling class – 
+that has been overwritten in a class object.
 -----------------------
 
 
