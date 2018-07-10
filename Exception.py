@@ -46,3 +46,11 @@ except Exception as e:
 	print('exception type: ',type(e).__name__)
 	z = None
 print("Division is : ",z)
+
+
+Output:-
+	
+Enter Number1: 2
+Enter Number2: 3
+exception type:  TypeError
+Division is :  None
