@@ -1,6 +1,10 @@
 Reading File from Local and perform some Operations:-
 
+ #Unix Local not windows
 >>> orderitemFILE = open("/root/data/retail_db/order_items/order_items.txt","r")
+
+#In case of WINDOWS this would be like:-
+>>> orderitemFILE = open("c:\\data\\funny.txt","r")
 
 #(‘r’) : Open text file for reading.
 
